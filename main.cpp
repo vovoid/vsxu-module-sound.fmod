@@ -25,26 +25,30 @@
 #define __declspec(a)
 #endif
 
-extern "C" {
-__declspec(dllexport) vsx_module* create_new_module(unsigned long module);
+extern "C"
+{
+__declspec(dllexport) vsx_module* create_new_module(unsigned long module, void* args);
 __declspec(dllexport) void destroy_module(vsx_module* m,unsigned long module);
 __declspec(dllexport) unsigned long get_num_modules();
 }
 
-vsx_module* create_new_module(unsigned long module) {
+vsx_module* create_new_module(unsigned long module, void* args)
+{
   switch(module){
     case 0:
       return (vsx_module*)(new vsx_sample_module);
   }
 }
 
-void destroy_module(vsx_module* m,unsigned long module) {
+void destroy_module(vsx_module* m,unsigned long module)
+{
   switch(module){
     case 0:
       return delete (vsx_sample_module*)m;
   }
 }
 
-unsigned long get_num_modules() {
+unsigned long get_num_modules()
+{
   return 1;
 }

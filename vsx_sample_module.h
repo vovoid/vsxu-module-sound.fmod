@@ -18,9 +18,6 @@
 */
 
 
-#ifndef VSX_SAMPLE_MODULE_H
-#define VSX_SAMPLE_MODULE_H
-
 #include "vsx_math_3d.h"
 #include "vsx_param.h"
 #include "vsx_module.h"
@@ -32,9 +29,36 @@ class vsx_sample_module : public vsx_module
   vsx_module_param_float* result;
 
 public:
-  virtual void module_info(vsx_module_info* info);
-  virtual void declare_params(vsx_module_param_list& in_parameters, vsx_module_param_list& out_parameters);
-  virtual void run();
-};
 
-#endif // VSX_SAMPLE_MODULE_H
+  void module_info(vsx_module_info* info)
+  {
+    info->identifier = "sample;module";
+    info->description = "Adds two input floats. And Returns an output float.";
+    info->in_param_spec =
+        "param1:float,"
+        "param2:float"
+    ;
+    info->out_param_spec = "result:float";
+    info->component_class = "parameters";
+  }
+
+  void declare_params(vsx_module_param_list& in_parameters, vsx_module_param_list& out_parameters)
+  {
+    param1 = (vsx_module_param_float*)in_parameters.create(VSX_MODULE_PARAM_ID_FLOAT,"param1");
+    param2 = (vsx_module_param_float*)in_parameters.create(VSX_MODULE_PARAM_ID_FLOAT,"param2");
+
+    result = (vsx_module_param_float*)out_parameters.create(VSX_MODULE_PARAM_ID_FLOAT,"result");
+
+    param1->set(0);
+    param2->set(0);
+    result->set(0);
+
+    loading_done = true;
+  }
+
+  void run()
+  {
+    result->set(param1->get()+param2->get());
+  }
+
+};
