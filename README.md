@@ -1,15 +1,17 @@
-vsxu sample module
+vsxu Fmod module
 ==================
 
-Sample Module For VSXu.
+This project provides 2 VSXu modules:
 
-All it does is take 2 float params for input and outputs a result = sum(inputs)
+  - stream play
+  - sample trigger
 
-Install:
+
+Install (linux):
 ---
 
-    git clone git://github.com/vovoid/vsxu-module.git
-    cd vsxu-module
+    git clone git://github.com/vovoid/vsxu-module-sound.fmod.git
+    cd vsxu-module-sound.fmod
     mkdir build
     cd build
     cmake ..
