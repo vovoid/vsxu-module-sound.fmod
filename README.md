@@ -26,6 +26,6 @@ you might want to set PKG_CONFIG_PATH to override the installed vsxu in
 
 Add this to your ~/.bash_aliases (or your other favourite bash startup script):
 
-  export PKG_CONFIG_PATH='/home/jaw/vsxu-dev/build/linux64/install/lib/pkgconfig'
+    export PKG_CONFIG_PATH='/home/jaw/vsxu-dev/build/linux64/install/lib/pkgconfig'
 
 This will make cmake find the VSXu installation in the correct directory.

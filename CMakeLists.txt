@@ -17,7 +17,7 @@ find_package(GLEW REQUIRED)
 include_directories( ${VSXU_INCLUDE_DIRS} )
 link_directories(${VSXu_LIBRARY_DIRS})
 
-set(SOURCES main.cpp vsx_sample_module.cpp)
+set(SOURCES main.cpp)
 add_library(${module_id} MODULE ${SOURCES})
 
 target_link_libraries(
